@@ -16,9 +16,20 @@ def inicio(request):
     if not request.user.is_authenticated:
         return redirect('login')
     else:
+        
         posts = Publicacion.objects.all()
         perfil = Perfil.objects.all()
-        return render(request,"homepage.html",{'posts':posts,'perfiles':perfil})
+        pag = Paginate(request, posts, 1)
+    
+        # Contexto a retornar a la vista
+        cxt = {
+            'posts': pag['queryset'],
+            'totPost': posts,
+            'paginator': pag,
+            'perfiles':perfil,
+        }
+
+        return render(request,"homepage.html",cxt)
 
 def inicio2(request):
     posts = Publicacion.objects.all()
