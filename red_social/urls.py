@@ -30,7 +30,6 @@ urlpatterns = [
     path('admin/',admin.site.urls),
     path(r'follows/',include('apps.follows.urls')),
     path(r'perfiles/',include('apps.perfiles.urls')),
-    path(r'home/',login_required(TemplateView.as_view(template_name='homepage.html')),name="home"),
     path(r'post/',include('apps.mensajes.urls')),
     path(r'cuentas/',include('apps.cuentas.urls')),
     path(r'accounts/',include('django.contrib.auth.urls')),
