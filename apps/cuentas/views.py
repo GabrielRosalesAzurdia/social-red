@@ -5,6 +5,7 @@ from .forms import MyCreateView
 from apps.mensajes.models import Publicacion
 from apps.perfiles.models import Perfil
 from django.conf import settings
+from apps.cuentas.paginator import Paginate
 
 class SignUp(generic.CreateView):
     form_class = MyCreateView
@@ -22,4 +23,14 @@ def inicio(request):
 def inicio2(request):
     posts = Publicacion.objects.all()
     perfil = Perfil.objects.all()
-    return render(request,"homepage.html",{'posts':posts,'perfiles':perfil})
+    pag = Paginate(request, posts, 1)
+    
+    # Contexto a retornar a la vista
+    cxt = {
+        'posts': pag['queryset'],
+        'totPost': posts,
+        'paginator': pag,
+        'perfiles':perfil,
+    }
+
+    return render(request,"homepage.html",cxt)
