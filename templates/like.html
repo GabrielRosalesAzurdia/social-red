@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}like{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">like!</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="container">
+{% if maybe == True %}
+<h4>Le has dado like a una publicacion</h4>
+{% else %}
+<h4>Esta publicacion ya tiene tu like</h4>
+{% endif %}
+<a href="{% url 'antehomepage' %}">Regresar al inicio</a>
+</section>
+{% endblock %}

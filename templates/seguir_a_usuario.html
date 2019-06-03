@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Seguir{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">Seguir a un usuario</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="container">
+    {% if seguimiento == False %}
+    <h3>Ya sigues a este usuario</h3>
+    {% else %}
+    <h3>Exelente ahora sigues a este usuario</h3>
+    {% endif %}
+    <a href="{% url 'antehomepage' %}">Regresar al inicio</a>
+</section>
+{% endblock %}

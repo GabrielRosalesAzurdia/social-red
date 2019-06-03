@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">Perfil</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="container">
+    <div class="row">
+        <div class="col-sm">
+            {% if usuario.cover.url != '' %}
+            <img src="{{ usuario.cover.url }}" alt="Aqui se coloca tu foto de Perfil" class="imgRedonda">
+            {% else %}
+            <img src="{{ usuario.cover }}" alt="Aqui se coloca tu foto de Perfil" class="imgRedonda">
+            {% endif %}
+        </div>
+        <div class="col-sm">
+            <p>
+                Usuario:
+            </p>
+            {{ usuario.nombre }}
+        </div>
+        <div class="col-sm">
+        </div>
+    </div>
+    <br>
+    <hr>
+    <p>
+        {{ usuario.descripcion }}
+    </p>
+
+    <div class="alert alert-primary">
+        Segidores : {{ usuario.seguidores }}
+    </div>
+
+    <a class="btn btn-primary" href="{% url 'seguir_usuario' usuario.id %}">
+        Follow
+    </a>
+
+    <br>
+    <br>
+    <p>
+        Publicaciones:
+    </p>
+
+    {% for dato in usuario.publicaciones %}
+    <div class="alert alert-dark">
+        <p>
+            {{ dato.titulo }}
+        </p>
+        <hr>
+        <p>
+            {{ dato.cont }}
+        </p>
+    </div>
+    <br>
+    {% endfor %}
+    
+</section>
+{% endblock %}

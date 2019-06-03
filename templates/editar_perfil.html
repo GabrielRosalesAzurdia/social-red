@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">Editar Perfil</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" class="container">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>
+{% endblock %}

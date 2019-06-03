@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">Hacer una cuenta!</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<form method="post" class="container">
+        {% csrf_token %}
+      
+        <div class="form-group">
+          <div>
+            <label class="form-control">Nombre de Usuario (servira para iniciar secion)</label>
+            <input type="text" name="username" class="form-control">
+            <br>
+          </div>
+          <div>
+            <label class="form-control">Primer nombre (servira para mostrar a los demas usuarios)</label>
+            <input type="text" name="first_name" class="form-control">
+            <br>
+          </div>
+          <div>
+            <label class="form-control">Email</label>
+            <input type="email" name="email" class="form-control">
+            <br>
+          </div>
+          <div>
+            <label class="form-control">Contraseña</label>
+            <input type="password" name="password1" class="form-control">
+            <br>
+          </div>
+          <div>
+            <label class="form-control">Confirmar Contraseña</label>
+            <input type="password" name="password2" class="form-control">
+            <br>
+          </div>
+          <button type="submit" class="btn btn-primary">Hecho</button>
+        </div>
+      </form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">login</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" class="container">
+    {% csrf_token %}
+
+    <div class="form-group">
+      <div>
+        <label class="form-control">Nombre de usuario</label>
+        <input type="text" name="username" class="form-control">
+        <br>
+      </div>
+      <div>
+        <label class="form-control">Contraseña</label>
+        <input type="password" name="password" class="form-control">
+        <br>
+      </div>
+      <div>
+        <a href="{% url 'pasword_reset'%}">Olvide la contraseña</a> 
+        <a href="{% url 'signup' %}">Crear una cuenta</a>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Ingresar">
+      </div>
+    </div>
+
+</form>
+
+{% endblock %}
+

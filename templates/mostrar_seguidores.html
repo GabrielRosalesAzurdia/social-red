@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de seguidores{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">Lista de seguidores</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="jumbotron">
+{% for seguidor in lista %}
+<div class="alert alert-primary">
+{% for usuario in Usuarios %}
+{% if seguidor == usuario.nombre %}
+<a href="{% url 'observar_perfil' usuario.id %}">{{seguidor}}</a>
+{% endif %}
+{% endfor %}    
+</div>
+{% endfor %}
+</section>
+{% endblock %}

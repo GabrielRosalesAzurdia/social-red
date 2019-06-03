@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1 class="text-center">Blog de programacion!</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<section class="container">
+    Si deseas crear un post ve a tu perfil y crealo alli!!
+    <br>
+    {% for post in posts %}
+    <div class="alert alert-dark">
+        <p>{{ post.titulo }}</p>
+        <hr>
+        <p>{{ post.contenido }}</p>
+        <hr>
+        <br>
+        <p>{{ post.fecha_publicacion }}</p>
+        Like: <a href="{% url 'like_publicacion' post.id %}" class="text-rigth"><i class="fas fa-heart"></i></a> {{ post.Personas_likes }}
+        <br>
+        {% for i in perfiles %}
+        {% if i.nombre == post.autor %}
+        <a href="{% url 'observar_perfil' i.id %}">{{ post.autor }}</a>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <br>
+    {% endfor %}
+</section>
+<div class="alert alert-dark">
+    <p class="text-center">Esos son todos los posts</p>
+</div>
+<script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ"crossorigin="anonymous"></script>
+
+{% endblock %}

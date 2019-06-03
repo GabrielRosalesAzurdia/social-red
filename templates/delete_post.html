@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<header class="jumbotron">
+    <h1  class="text-center">Eliminar Publicacion</h1>
+</header>
+{% endblock %}
+
+{% block content %}
+<form method="POST" class="container">
+    {% csrf_token %}
+    <h1>Desea eliminar el Post {{ object.nombre }}</h1>
+    <br>
+    <button type="submit" class="btn btn-dark">Eliminar</button>
+    <a href="{% url 'mostrar_perfil' %}" class="btn btn-danger">Cancelar</a>
+</form>
+{% endblock %}
