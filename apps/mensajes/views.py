@@ -39,6 +39,10 @@ def like(request,id_publicacion):
     lista_personas_likes = ast.literal_eval(o.likes)
     maybe = bool(x[0].first_name in lista_personas_likes)
     if maybe == True : 
+        o.Personas_likes = int(o.Personas_likes) - 1
+        lista_personas_likes.remove(x[0].first_name)
+        o.likes = lista_personas_likes
+        o.save()
         return render(request,'like.html',{'maybe':False})
     else:    
         o.Personas_likes = int(o.Personas_likes) + 1
