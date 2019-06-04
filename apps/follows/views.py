@@ -29,11 +29,15 @@ def seguir(request,perfil_id_seguir):
     O = User.objects.filter(username = request.user)
     o = O[0]
     a = A[0]
+    lista_seguidores = ast.literal_eval(a.seguitores_nombres)
 
     if o.first_name in a.seguitores_nombres:
-         return render(request,'seguir_a_usuario.html',{'seguimiento':False})
+        lista_seguidores.remove(o.first_name)
+        a.seguitores_nombres = lista_seguidores
+        a.seguidores = int(a.seguidores) - 1
+        a.save()
+        return render(request,'seguir_a_usuario.html',{'seguimiento':False})
     else:
-        lista_seguidores = ast.literal_eval(a.seguitores_nombres)
         lista_seguidores.append(o.first_name)
         a.seguitores_nombres = lista_seguidores
         a.seguidores = int(a.seguidores) + 1
