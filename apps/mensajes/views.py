@@ -43,12 +43,14 @@ def like(request,id_publicacion):
         lista_personas_likes.remove(x[0].first_name)
         o.likes = lista_personas_likes
         o.save()
-        return render(request,'like.html',{'maybe':False})
+        #return render(request,'like.html',{'maybe':False})
+        return redirect('antehomepage')
     else:    
         o.Personas_likes = int(o.Personas_likes) + 1
         lista_personas_likes.append(x[0].first_name)
         o.likes = lista_personas_likes
         o.save()
-        return render(request,'like.html',{'maybe':True})
+        #return render(request,'like.html',{'maybe':True})
+        return redirect('antehomepage')
 
     
