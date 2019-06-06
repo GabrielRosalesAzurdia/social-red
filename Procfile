@@ -1,1 +1,1 @@
-web: gunicorn twitta_rest.wsgi
+web: gunicorn red_social.wsgi
