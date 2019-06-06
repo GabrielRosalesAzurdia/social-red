@@ -1,3 +1,3 @@
-# Twitta Rest
+# Social red
 
-Social networl created with django and django rest framework.
+Red social programada en django de una forma basica y sin apis 
