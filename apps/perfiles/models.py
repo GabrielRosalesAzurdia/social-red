@@ -3,8 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Perfil(models.Model):
-    nombre = models.CharField(max_length=30)
-    descripcion = models.CharField(max_length=30)
+    nombre = models.CharField(max_length=255)
+    descripcion = models.CharField(max_length=255)
     publicaciones = models.TextField()
     cover = models.ImageField(upload_to='images/')
     seguidores = models.IntegerField(default=0)
